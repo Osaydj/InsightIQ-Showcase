@@ -43,7 +43,7 @@ flowchart TD
     B --> C["Pandas calculations"]
     C --> D["KPIs and trends"]
     C --> E["Anomaly review"]
-    C --> F["Forecasts and uncertainty"]
+    C --> F["Forecasts"]
 ```
 
 ### Anomaly analysis
