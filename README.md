@@ -1,77 +1,77 @@
 # InsightIQ — AI Business Analytics Assistant
 
-A portfolio business analytics application that transforms validated fictional sales data into business KPIs, interactive dashboards, and grounded decision-support workflows.
+InsightIQ is a portfolio business analytics application that transforms validated fictional sales data into clear KPIs, interactive visualizations, anomaly reviews, and deterministic sales forecasts.
 
-## Live Demo
+[![Live App](https://img.shields.io/badge/Launch-Live_App-e11d48?style=for-the-badge)](https://insightiq-business-analytics.streamlit.app)
 
-[Launch the InsightIQ analytics dashboard](https://insightiq-business-analytics.streamlit.app)
-
-> The public demo runs in analytics-only mode. It requires no API key and makes no paid AI requests.
+> **Version 2 is live.** The public application runs in analytics-only mode, requires no API key, and makes no paid AI requests.
 
 ## Dashboard Preview
 
-![InsightIQ analytics dashboard](./InsightIQ-Dashboard.png)
+### Business overview
 
-## Project Overview
+![InsightIQ Version 2 business overview](./InsightIQ-Overview.png)
 
-InsightIQ demonstrates how Python can turn uploaded CSV sales data into reliable business insights. Pandas performs every calculation, while Streamlit and Plotly provide the interactive interface and visualizations.
+### Anomaly review
 
-The application separates deterministic calculations from optional AI interpretation so displayed statistics are never invented by a language model.
+![InsightIQ Version 2 anomaly review](./InsightIQ-Anomalies.png)
 
-## Live Demo Features
+### Sales forecasting
 
-- CSV upload and required-column validation
-- Date, category, and region filters
-- Revenue, profit, and profit-margin KPIs
-- Transaction, unit-sales, and average-order-value KPIs
-- Best-performing product and region
-- Interactive revenue and profit trends
-- Category, regional, and product-performance charts
-- Accessible supporting tables
-- Filtered CSV downloads
-- Fictional downloadable sample dataset
-- Clear validation and error messages
-- 10 MB upload and 100,000-row processing limits
+![InsightIQ Version 2 sales forecast](./InsightIQ-Forecasting.png)
 
-## Optional AI Architecture
+## What Version 2 Does
 
-The private application source also contains tested, optional Claude-powered modules for:
+- Validates uploaded sales CSVs and financial arithmetic
+- Applies date, category, and region filters across the dashboard
+- Displays revenue, profit, margin, transaction, unit, order-value, product, and region KPIs
+- Provides separate Overview, Trends, Anomalies, Forecasting, Products & Markets, Data Explorer, and AI Insights tabs
+- Flags unusual revenue and profit days against a rolling historical baseline
+- Forecasts daily revenue and profit using recent linear trends and day-of-week patterns
+- Displays a statistical uncertainty range and warns when the forecast horizon exceeds the historical lookback
+- Provides accessible chart-equivalent tables and spreadsheet-safe CSV downloads
+- Includes a downloadable 5,000-row fictional sample dataset
+- Enforces a 10 MB upload limit and a 100,000-row processing limit
 
-- Grounded executive summaries
-- Natural-language “Ask Your Data” questions
-- Approved read-only Pandas analytics tools
-- Local retrieval from fictional company documents
-- Evidence-based management recommendations
-- Conversation history
-- Rejection of unsupported statistics and citations
+## Calculation Approach
 
-These features are disabled in the public demo because they require paid API access. Python performs the calculations before any optional AI interpretation.
-
-## Architecture
+Every displayed statistic is calculated by Python. The public app does not ask a language model to calculate, estimate, or invent business metrics.
 
 ```mermaid
 flowchart TD
-    A["CSV upload"] --> B["Schema and financial validation"]
+    A["Sales CSV"] --> B["Schema and arithmetic validation"]
     B --> C["Pandas calculations"]
-    C --> D["KPIs and Plotly dashboard"]
-    C --> E["Approved analytics tools"]
-    F["Fictional knowledge base"] --> G["Local document retrieval"]
-    E --> H["Optional Claude analysis"]
-    G --> H
+    C --> D["KPIs and trends"]
+    C --> E["Anomaly review"]
+    C --> F["Forecasts and uncertainty"]
 ```
+
+### Anomaly analysis
+
+Daily totals are compared with a 28-day rolling baseline. Flagged dates are investigation leads, not proof of a business problem.
+
+### Forecasting
+
+Forecasts combine a recent linear trend with observed day-of-week patterns. The uncertainty band communicates statistical variability. Forecasts are estimates, not guarantees or financial advice.
 
 ## Engineering Highlights
 
-- Deterministic financial calculations
-- Reusable analytics and visualization modules
-- Separation of application, data, analytics, AI, RAG, and UI concerns
-- Strict CSV schema and arithmetic validation
+- Modular analytics, visualization, data-validation, UI, AI, and retrieval layers
+- Deterministic financial calculations with application-level validation
+- Shared formatting and download-safety helpers
+- Spreadsheet-formula protection in exported CSV files
 - No arbitrary code execution
 - No API credentials stored in Git
-- Private production source repository
 - Automated GitHub Actions workflow
-- 59 passing automated tests
-- Public deployment from a private repository
+- **81 passing automated tests**
+- Public deployment from a private source repository
+- Versioned rollback points for Version 1 and Version 2
+
+## Optional AI Architecture
+
+The private source repository also contains tested, optional Claude-powered modules for grounded executive summaries, natural-language questions, read-only analytics tools, local document retrieval, and evidence-based recommendations.
+
+These features are disabled in the public deployment because they require paid API access. Python calculates the supporting facts before any optional AI interpretation.
 
 ## Technology
 
@@ -92,7 +92,7 @@ flowchart TD
 
 The included sample contains 5,000 entirely fictional transactions covering 12 months. It contains no real customers, confidential company information, or proprietary business data.
 
-The public deployment does not require an Anthropic API key and cannot spend AI API credits.
+The public deployment does not require an Anthropic API key and cannot spend AI API credits. Uploaded files are processed for the active app session; users should still avoid uploading confidential or regulated information to any public demo.
 
 ## Source Availability
 
